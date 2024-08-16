@@ -1,39 +1,40 @@
-import java.util.Scanner; //importamos la libreria java.util
+import java.util.Scanner; // Importamos la librería java.util
 
 public class Codigo5 {
-	// Añadimos un metodo main
-	public static void main(String[] args) {
-
-//Creamos nuestra variable tipo scanner
-	Scanner s = new Scanner(System.in); // Añanadimos el tipo de scanner System.in
-	
-		//Damos contexto al usuario de lo que queremos que introduzca // Corregimos la comilla doble
-	    
-		System.out.print("Introduzca un número: "); 
-	    
-	    int ni = s.nextInt();		//Cambiamos el tipo de dato
-	    int c = ni;					
-	    
-	    // Inicializa los las variables 
-	    int afo = 0;
-	    int noAfo = 0;
-	    
-	    while (ni > 0) {
-		  int digito = (int) (ni % 10);
-	      if ((digito == 3) || (digito == 7) || (digito == 8) || (digito == 9)) {
-			afo++;
-	      } else {
-			noAfo++;
-		  
-		  ni /= 10;
-	    }
-
-	    if (afo > noAfo) {
-	      System.out.println("El " + c + " es un número afortunado."); //Se corrigio la palabra println 
-	    } else {
-	      System.out.println("El " + c + " no es un número afortunado.");
-	    }
-	   
-	  }
-	}
-	}
+    public static void main(String[] args) {
+        // Creamos una instancia de Scanner para leer la entrada del usuario
+        Scanner s = new Scanner(System.in);
+        
+        // Informamos al usuario de lo que debe introducir
+        System.out.print("Introduzca un número: ");
+        
+        // Leemos el número introducido por el usuario
+        int ni = s.nextInt();
+        int c = ni; // Guardamos una copia del número para mostrarlo más tarde
+        
+        // Inicializamos las variables
+        int afo = 0;
+        int noAfo = 0;
+        
+        // Procesamos cada dígito del número
+        while (ni > 0) {
+            int digito = ni % 10; // Extraemos el último dígito
+            if (digito == 3 || digito == 7 || digito == 8 || digito == 9) {
+                afo++; // Contamos los dígitos afortunados
+            } else {
+                noAfo++; // Contamos los dígitos no afortunados
+            }
+            ni /= 10; // Eliminamos el último dígito
+        }
+        
+        // Determinamos si el número es afortunado y mostramos el resultado
+        if (afo > noAfo) {
+            System.out.println("El " + c + " es un número afortunado.");
+        } else {
+            System.out.println("El " + c + " no es un número afortunado.");
+        }
+        
+        // Cerramos el Scanner para liberar recursos
+        s.close();
+    }
+}
